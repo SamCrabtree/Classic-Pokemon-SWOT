@@ -4,17 +4,21 @@ import pandas as pd
 entries = os.listdir('data/')
 
 ## MAIN PROGRAM FUNCTION
+
 def project_program():
   print('Please Select the file you wish to review...\n')
 
 ## DISPLAYS FILES IN "DATA" FOLDER
+
   for entry in entries:
      print(entry)
 
+## PROMPTS THE USER FOR WHICH FILE THEY WISH TO REVIEW
 
   selection = input('\n Please enter the name of the file you wish to review... ')
 
-##CREATES URL BASED ON FILE SELECTION
+## CREATES URL BASED ON USER FILE SELECTION
+
   url = "data/" + selection
   
 ##CONFIRMS YOU CHOSE A VALID/CORRECT FILE
@@ -44,7 +48,7 @@ def project_program():
     else:
       exit()
 
-##IF THE USER CONFIRMS THAT THE SELECTION IS 
+##IF THE USER CONFIRMS THAT THE SELECTION IS INCORRECT, IT RESTARTS THE PROGRAM
   else: 
     project_program()
 
