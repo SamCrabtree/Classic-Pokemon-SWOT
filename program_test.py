@@ -1,5 +1,12 @@
 import os
 import pandas as pd
+import requests
+
+
+r = requests.get('https://api.weather.gov/')
+x = r.json()
+df = pd.DataFrame()
+print(df)
 
 entries = os.listdir('data/')
 
