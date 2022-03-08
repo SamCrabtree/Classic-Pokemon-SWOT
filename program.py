@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import requests
 
 entries = os.listdir('data/')
 
@@ -15,7 +16,7 @@ def project_program():
 
 ## PROMPTS THE USER FOR WHICH FILE THEY WISH TO REVIEW
 
-  selection = input('\n Please enter the name of the file you wish to review... ')
+  selection = input('\n Please enter the name of the file you wish to review. OR type "EXIT" to close the program.')
 
 ## CREATES URL BASED ON USER FILE SELECTION
 
@@ -29,8 +30,8 @@ def project_program():
 
   else:
     print('\n There is no file by that name. Please check your spelling.')
-    confirmation = input("\nPress Enter To Try Again")
-    project_program()
+    confirmation = input('\nPress Enter To Try Again OR type "EXIT" to close the program.')
+    project_program() 
 
     
 ## IF SELECTION IS VALID, THIS VARIABLE READS THE CSV FILE
@@ -42,7 +43,7 @@ def project_program():
   if confirmation.lower() == 'yes':
     print("\n Now displaying the contents of " + selection + ":\n")
     print(df)
-    next = input("\n Would you like to like to view another file? Yes/No? ")
+    next = input("\n Would you like to like to view another file? Yes/No? If not, hit enter to exit.")
     if next.lower() == 'yes':
       project_program()
     else:
