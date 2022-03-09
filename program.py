@@ -1,59 +1,74 @@
-import os
-import pandas as pd
+import json
 import requests
+import pandas
+import sys
 
-entries = os.listdir('data/')
+name = []
+pokemon_team = []
+pokemon_elements = []
 
-## MAIN PROGRAM FUNCTION
 
-def project_program():
-  print('Please Select the file you wish to review...\n')
+def main():
 
-## DISPLAYS FILES IN "DATA" FOLDER
+    print("Welcome to the Classic Pokemon SWOT Program! \n")
+    print(listPokemon())
+    team()
 
-  for entry in entries:
-     print(entry)
 
-## PROMPTS THE USER FOR WHICH FILE THEY WISH TO REVIEW
+# THIS PULLS ALL OF THE NAMES OF THE OG POKEMON
 
-  selection = input('\n Please enter the name of the file you wish to review. OR type "EXIT" to close the program.')
+def listPokemon():
+    all_api = "https://pokeapi.co/api/v2/pokemon?limit=151" 
+    r = requests.get(all_api) 
+    api_response = json.loads(r.text)
+    pokemon_list = api_response['results']
+    for pokemon in pokemon_list:
+        print(pokemon['name'].capitalize())
 
-## CREATES URL BASED ON USER FILE SELECTION
 
-  url = "data/" + selection
-  
-##CONFIRMS YOU CHOSE A VALID/CORRECT FILE
+#
 
-  if selection in entries:
-    print("\n You selected, " + selection + ". Is that correct?")
-    confirmation = input("\nYes or No? ")
-
-  else:
-    print('\n There is no file by that name. Please check your spelling.')
-    confirmation = input('\nPress Enter To Try Again OR type "EXIT" to close the program.')
-    project_program() 
+def pokeLookup():
+    try:
+        poke_request = input('What pokemon would you like to add to your team? OR type "List" to display a list of all names. \n' )
+        if poke_request.lower == "list":
+            listPokemon()
+        else:
+            individual_api = "https://pokeapi.co/api/v2/pokemon/" + poke_request.lower() + "/"    
+            response = requests.get(individual_api)
+            poke_data = json.loads(response.text)
+            pokemon_name = poke_data['species']['name']
+            pokemon_type = poke_data['types'][0]['type']['name']
+            print("\n I see you chose " + pokemon_name.capitalize() + ". Great choice! \n")
+        return pokemon_name, pokemon_type
+    
+    except:
+        print("I couldn't find a match for that entry.")
+        
 
     
-## IF SELECTION IS VALID, THIS VARIABLE READS THE CSV FILE
+   
 
-  df = pd.read_csv(url)
+def team():
+        poke_team = []
+        types = []
+        while len(poke_team) < 6:
+            try:
+                a, b = pokeLookup()
+                poke_team.append(a)
+                types.append(b)
+            except:
+                print("Let's try again...")
+                
+            
+        for pokemon in poke_team:
+            print(pokemon.capitalize())
 
-##IF USER CONFIRMS THEIR SELECTION, IT THEN DISPLAYS THE CONTENTS OF THE FILE
+        print(types)
 
-  if confirmation.lower() == 'yes':
-    print("\n Now displaying the contents of " + selection + ":\n")
-    print(df)
-    next = input("\n Would you like to like to view another file? Yes/No? If not, hit enter to exit.")
-    if next.lower() == 'yes':
-      project_program()
-    else:
-      exit()
-
-##IF THE USER CONFIRMS THAT THE SELECTION IS INCORRECT, IT RESTARTS THE PROGRAM
-  else: 
-    project_program()
+        return poke_team, types
+            
 
 
-
-project_program()
+main()
 
