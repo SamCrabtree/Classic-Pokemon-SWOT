@@ -2,34 +2,20 @@ import json
 import requests
 import pandas
 
-
-# GLOBAL VARIABLES
-
 # MAIN FUNCTION 
 def main():
-
     print("Welcome to the Classic Pokemon SWOT Program! \n")
-    
     myTeam,myElements = build_Team()
-
     print(myTeam)
     
     buildup = team_makeup(myElements)
-    print(buildup)
-    
     weaknesses = team_weakness(buildup)
-    print(weaknesses)
-    
     strengths = team_strength(buildup)
-    print(strengths)
+    swot_anaylzer(buildup, weaknesses, strengths)
 
 
 
-
-
-
-#THIS FUNCTION ALLOWS YOU TO PICK YOUR TEAM OF 6 POKEMON
-
+#THIS FUNCTION COLLECTS THE NAME AND ELEMENTS OF USER POKEMON CHOICES VIA THE POKE LOOKUP
 def build_Team():
         team = []
         type = []
@@ -47,24 +33,14 @@ def build_Team():
 
         return team, type
 
-# THIS PULLS ALL OF THE NAMES OF THE OG POKEMON
-
-def listPokemon():
-    all_api = "https://pokeapi.co/api/v2/pokemon?limit=151" 
-    r = requests.get(all_api) 
-    api_response = json.loads(r.text)
-    pokemon_list = api_response['results']
-    for pokemon in pokemon_list:
-        print(pokemon['name'].capitalize())
-
 
 # THIS FUNCTION PULLS THE INFORMATION FROM YOUR POKEMON SELECTION 
-
-def pokeLookup():
+def pokeLookup(): 
     try:
-        poke_request = input('What pokemon would you like to add to your team? OR  \n' )
-        if poke_request.lower == "list":
+        poke_request = input('\n What pokemon would you like to add to your team? \n' )
+        if poke_request.lower() == "list":
             listPokemon()
+            pokeLookup()
         else:
             individual_api = "https://pokeapi.co/api/v2/pokemon/" + poke_request.lower() + "/"    
             response = requests.get(individual_api)
@@ -73,23 +49,17 @@ def pokeLookup():
             pokemon_type = poke_data['types'][0]['type']['name']
             print("\n I see you chose " + pokemon_name.capitalize() + " a " + pokemon_type.capitalize() + " pokemon. Great choice! \n")
         return pokemon_name, pokemon_type
-    
     except:
-        print("I couldn't find a match for that entry. If you are having trouble, type LIST to print a list of the Original 151 Pokemon and their spelling.")
-        
+        print("I couldn't find a match for that entry. If you are having trouble, type LIST to print a list of the Original 151 Pokemon and their correct spelling. \n")
 
-    
-
-
-# THIS FUNCTION GENERATES THE STRENGTH AND WEAKNESS COUNTS
-def swot_anaylzer():
-
-  return
-
-
-
-
-
+# THIS PULLS ALL OF THE NAMES OF THE OG POKEMON IF NEEDED
+def listPokemon():
+    all_api = "https://pokeapi.co/api/v2/pokemon?limit=151" 
+    r = requests.get(all_api) 
+    api_response = json.loads(r.text)
+    pokemon_list = api_response['results']
+    for pokemon in pokemon_list:
+        print(pokemon['name'].capitalize())
 
 # THIS FUNCTION WILL GENERATE A PIE CHART ABOUT YOUR TEAMS ELEMENTAL MAKEUP.             
 def team_makeup(type_list):
@@ -108,10 +78,8 @@ def team_makeup(type_list):
   rock_ct = type_list.count('rock')
   ghost_ct = type_list.count('ghost')
   dragon_ct = type_list.count('dragon')
-
   poke_ct = [ normal_ct, fire_ct, water_ct, grass_ct, electric_ct, ice_ct, fighting_ct, poison_ct, 
   ground_ct, flying_ct, psychic_ct, bug_ct, rock_ct, ghost_ct, dragon_ct ]
-  
   return poke_ct
 
 # THIS FUNCTION GENERATES A PIE CHART ON WHAT ELEMENT POKEMON YOUR TEAM WILL HAVE AN ADVANTAGE AGAINST
@@ -132,12 +100,8 @@ def team_strength(build):
   rock_str = build[1] + build[5] + build[9] + build[11]
   ghost_str = build[13] + (build[0] * 2) + (build[6] * 2)
   dragon_str = build[14]
-
-# THIS IS A LIST OF ALL THE ABOVE VARIABLES FOR SIMPLICITY
   poke_str = [ normal_str, fire_str, water_str, grass_str, electric_str, ice_str, fighting_str, poison_str, 
   ground_str, flying_str, psychic_str, bug_str, rock_str, ghost_str, dragon_str ]
-
-
   return poke_str
 
 # THIS FUNCTION GENERATES A PIE CHART ON WHAT ELEMENT POKEMON YOUR TEAM WILL STRUGGLE AGAINST
@@ -157,15 +121,20 @@ def team_weakness(build):
   rock_wk = build[6] + build[8]
   ghost_wk = 0
   dragon_wk = 0
-
   poke_wk = [ normal_wk, fire_wk, water_wk, grass_wk, electric_wk, ice_wk, fighting_wk, poison_wk, 
   ground_wk, flying_wk, psychic_wk, bug_wk, rock_wk, ghost_wk, dragon_wk ]
-
   return poke_wk
 
+# THIS FUNCTION GENERATES THE STRENGTH AND WEAKNESS COUNTS
+def swot_anaylzer(count, strength, weakness):
+  list_elements = [ 'Normal', 'Fire', 'Water', 'Grass', 'Electric', 'Ice', 'Fighting', 'Poison', 'Ground', 'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost', 'Dragon'  ]
+  team_make_up = count
+  team_strengths = strength
+  team_weaknesses = weakness
+  
+
+  return
 
 
 # THIS ENSURES THE PROGRAM RUNS UPON LAUNCH 
 main()
-
-
