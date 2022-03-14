@@ -11,8 +11,7 @@ def main():
     weaknesses = team_weakness(buildup)
     strengths = team_strength(buildup)
     swot_anaylzer(buildup, weaknesses, strengths)
-
-
+    print('That looks like a solid team!')
 
 #THIS FUNCTION COLLECTS THE NAME AND ELEMENTS OF USER POKEMON CHOICES VIA THE POKE LOOKUP
 def build_Team():
@@ -24,9 +23,7 @@ def build_Team():
                 team.append(a)
                 type.append(b)
             except:
-                print("Let's try again...")
-                
-            
+                print("Let's try again...")          
         return team, type
 
 
@@ -80,7 +77,6 @@ def team_makeup(type_list):
 
 # THIS FUNCTION GENERATES A PIE CHART ON WHAT ELEMENT POKEMON YOUR TEAM WILL HAVE AN ADVANTAGE AGAINST
 def team_strength(build):
-  
   normal_str = 0
   fire_str = build[3] + build[5] + build[11]
   water_str = build[1] + build[8] + build[14]
@@ -131,27 +127,23 @@ def swot_anaylzer(count, strength, weakness):
   
   
   Team_Make_Up, ax1 = plt.subplots()
-  ax1.pie(team_make_up, labels=list_elements, explode=explode, autopct='%1.1f%%', shadow=True, startangle=90)
+  ax1.pie(team_make_up, labels=list_elements, explode=explode, autopct='%1.1f%%', shadow=False, startangle=90)
   ax1.axis('equal')
   plt.title("Check Out Your Pokemon Build!", bbox={'facecolor':'0.8', 'pad':5})
   plt.figure(0)
 
   Team_Strengths, ax1 = plt.subplots()
-  ax1.pie(team_strengths, labels=list_elements, explode=explode, autopct='%1.1f%%', shadow=True, startangle=90)
+  ax1.pie(team_strengths, labels=list_elements, explode=explode, autopct='%1.1f%%', shadow=False, startangle=90)
   ax1.axis('equal')
   plt.title("Your Pokemon Team Is Most Effective Against...\n" + "(Deal heavy damage for elements with higher percentages!)", bbox={'facecolor':'0.8', 'pad':5})
   plt.figure(1)
   
   Team_Weaknesses, ax1 = plt.subplots()
-  ax1.pie(team_weaknesses, labels=list_elements, explode=explode, autopct='%1.1f%%', shadow=True, startangle=90)
+  ax1.pie(team_weaknesses, labels=list_elements, explode=explode, autopct='%1.1f%%', shadow=False, startangle=90)
   ax1.axis('equal')
   plt.title("Your Pokemon Team Is Most Vunerable To...\n" + "(Look out for elements with higher percentages!)", bbox={'facecolor':'0.8', 'pad':5})
   plt.figure(2)
   plt.show()
-  
   return
-
-
-
 # THIS ENSURES THE PROGRAM RUNS UPON LAUNCH 
 main()
