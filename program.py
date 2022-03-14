@@ -120,6 +120,7 @@ def team_weakness(build):
 # THIS FUNCTION GENERATES THE STRENGTH AND WEAKNESS COUNTS
 def swot_anaylzer(count, strength, weakness):
   list_elements = ['Normal', 'Fire', 'Water', 'Grass', 'Electric', 'Ice', 'Fighting', 'Poison', 'Ground', 'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost', 'Dragon']
+  colors = ['lavenderblush', 'firebrick', 'royalblue', 'forestgreen', 'yellow', 'mediumblue', 'saddlebrown', 'black', 'peru', 'cornflowerblue', 'darkviolet', 'darkgreen', 'slategray', 'ghostwhite', 'silver']
   team_make_up = count
   explode = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
   team_strengths = strength
@@ -127,24 +128,27 @@ def swot_anaylzer(count, strength, weakness):
   
   
   Team_Make_Up, ax1 = plt.subplots()
-  ax1.pie(team_make_up, labels=list_elements, explode=explode, autopct='%1.1f%%', shadow=False, startangle=90)
+  ax1.pie(team_make_up, labels=list_elements, colors=colors, explode=explode, autopct='%1.1f%%', shadow=False, startangle=90)
   ax1.axis('equal')
   plt.title("Check Out Your Pokemon Build!", bbox={'facecolor':'0.8', 'pad':5})
+  plt.legend()
   plt.figure(0)
 
   Team_Strengths, ax1 = plt.subplots()
-  ax1.pie(team_strengths, labels=list_elements, explode=explode, autopct='%1.1f%%', shadow=False, startangle=90)
+  ax1.pie(team_strengths, labels=list_elements, colors=colors, explode=explode, autopct='%1.1f%%', shadow=False, startangle=90)
   ax1.axis('equal')
   plt.title("Your Pokemon Team Is Most Effective Against...\n" + "(Deal heavy damage for elements with higher percentages!)", bbox={'facecolor':'0.8', 'pad':5})
+  plt.legend()
   plt.figure(1)
   
   Team_Weaknesses, ax1 = plt.subplots()
-  ax1.pie(team_weaknesses, labels=list_elements, explode=explode, autopct='%1.1f%%', shadow=False, startangle=90)
+  ax1.pie(team_weaknesses, labels=list_elements, colors=colors, explode=explode, autopct='%1.1f%%', shadow=False, startangle=90)
   ax1.axis('equal')
   plt.title("Your Pokemon Team Is Most Vunerable To...\n" + "(Look out for elements with higher percentages!)", bbox={'facecolor':'0.8', 'pad':5})
+  plt.legend()
   plt.figure(2)
   plt.show()
   return
-  
+
 # THIS ENSURES THE PROGRAM RUNS UPON LAUNCH 
 main()
