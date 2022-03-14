@@ -1,13 +1,12 @@
 import json
 import requests
-import pandas
+import matplotlib.pyplot as plt
 
 # MAIN FUNCTION 
 def main():
     print("Welcome to the Classic Pokemon SWOT Program! \n")
     myTeam,myElements = build_Team()
-    print(myTeam)
-    
+    team = myTeam    
     buildup = team_makeup(myElements)
     weaknesses = team_weakness(buildup)
     strengths = team_strength(buildup)
@@ -28,9 +27,6 @@ def build_Team():
                 print("Let's try again...")
                 
             
-        for pokemon in team:
-            print(pokemon.capitalize())
-
         return team, type
 
 
@@ -127,13 +123,34 @@ def team_weakness(build):
 
 # THIS FUNCTION GENERATES THE STRENGTH AND WEAKNESS COUNTS
 def swot_anaylzer(count, strength, weakness):
-  list_elements = [ 'Normal', 'Fire', 'Water', 'Grass', 'Electric', 'Ice', 'Fighting', 'Poison', 'Ground', 'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost', 'Dragon'  ]
+  list_elements = ['Normal', 'Fire', 'Water', 'Grass', 'Electric', 'Ice', 'Fighting', 'Poison', 'Ground', 'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost', 'Dragon']
   team_make_up = count
+  explode = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
   team_strengths = strength
   team_weaknesses = weakness
   
+  
+  Team_Make_Up, ax1 = plt.subplots()
+  ax1.pie(team_make_up, labels=list_elements, explode=explode, autopct='%1.1f%%', shadow=True, startangle=90)
+  ax1.axis('equal')
+  plt.title("Check Out Your Pokemon Build!", bbox={'facecolor':'0.8', 'pad':5})
+  plt.figure(0)
 
+  Team_Strengths, ax1 = plt.subplots()
+  ax1.pie(team_strengths, labels=list_elements, explode=explode, autopct='%1.1f%%', shadow=True, startangle=90)
+  ax1.axis('equal')
+  plt.title("Your Pokemon Team Is Most Effective Against...\n" + "(Deal heavy damage for elements with higher percentages!)", bbox={'facecolor':'0.8', 'pad':5})
+  plt.figure(1)
+  
+  Team_Weaknesses, ax1 = plt.subplots()
+  ax1.pie(team_weaknesses, labels=list_elements, explode=explode, autopct='%1.1f%%', shadow=True, startangle=90)
+  ax1.axis('equal')
+  plt.title("Your Pokemon Team Is Most Vunerable To...\n" + "(Look out for elements with higher percentages!)", bbox={'facecolor':'0.8', 'pad':5})
+  plt.figure(2)
+  plt.show()
+  
   return
+
 
 
 # THIS ENSURES THE PROGRAM RUNS UPON LAUNCH 

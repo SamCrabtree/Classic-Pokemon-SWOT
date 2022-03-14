@@ -6,8 +6,8 @@ authors = ["Sam Crabtree <samuel.crabtree@protonmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pandas = "^1.4.0"
 requests = "^2.27.1"
+matplotlib = "^3.5.1"
 
 [tool.poetry.dev-dependencies]
 
