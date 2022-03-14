@@ -27,7 +27,7 @@ def build_Team():
         return team, type
 
 
-# THIS FUNCTION PULLS THE INFORMATION FROM YOUR POKEMON SELECTION 
+# THIS FUNCTION PULLS THE INFORMATION FROM YOUR POKEMON SELECTION AND PASSES IT BACK THE THE BUILD TEAM FUNCTION
 def pokeLookup(): 
     try:
         poke_request = input('\n What pokemon would you like to add to your team? \n' )
@@ -117,7 +117,7 @@ def team_weakness(build):
   ground_wk, flying_wk, psychic_wk, bug_wk, rock_wk, ghost_wk, dragon_wk ]
   return poke_wk
 
-# THIS FUNCTION GENERATES THE STRENGTH AND WEAKNESS COUNTS
+# THIS FUNCTION GENERATES THE STRENGTH AND WEAKNESS COUNTS AND THEN PLOTS THE RESULTS TO THREE SEPERATE PIE CHARTS
 def swot_anaylzer(count, strength, weakness):
   list_elements = ['Normal', 'Fire', 'Water', 'Grass', 'Electric', 'Ice', 'Fighting', 'Poison', 'Ground', 'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost', 'Dragon']
   colors = ['lavenderblush', 'firebrick', 'royalblue', 'forestgreen', 'yellow', 'mediumblue', 'saddlebrown', 'black', 'peru', 'cornflowerblue', 'darkviolet', 'darkgreen', 'slategray', 'ghostwhite', 'silver']
