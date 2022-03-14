@@ -145,5 +145,6 @@ def swot_anaylzer(count, strength, weakness):
   plt.figure(2)
   plt.show()
   return
+  
 # THIS ENSURES THE PROGRAM RUNS UPON LAUNCH 
 main()
