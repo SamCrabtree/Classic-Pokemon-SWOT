@@ -9,7 +9,7 @@ The Classic Pokemon SWOT program allows you to choose your dream original pokemo
 
 1. Implement a “master loop” console application where the user can repeatedly enter commands/perform actions, including choosing to exit the program.	
 
--
+-This is done using the main() program function.
 
 2. Connect to an external/3rd party API and read data into the app. 
 
@@ -30,7 +30,13 @@ python -m -venv venv
 Mac/Linux
 python3 -m -venv venv
 3. Activate your virtual environment 
-4. Install the requirements.txt file by typing the following command
+Windows 
+venv\Scripts\activate.bat
+Mac/Linux
+source venv/bin/activate
+4. Install the requirements.txt file using the following comand 
+pip install -r requirements.txt
+
 
 ### Via Poetry
 1. Clone the Repository to your local device.
