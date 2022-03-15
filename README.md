@@ -9,50 +9,54 @@ The Classic Pokemon SWOT program allows you to choose your dream original pokemo
 
 1. Implement a “master loop” console application where the user can repeatedly enter commands/perform actions, including choosing to exit the program.	
 
--This is done using the main() program function.
+- This is done using the main() program function.
 
 2. Connect to an external/3rd party API and read data into the app. 
 
 - This is done by utilizing the Pokemon API.  
 
 3. Visualize data in a graph, chart, or other visual representation of data.
+
 - This is done using pie charts with Matplotlib. 
 
 4. Utilize a virtual environment and document library dependencies in a requirements.txt file.
+- This is done both via Poetry and the traditional requirements.txt file. 
 
 ## Setup and Install
 
 ### Via Requirements.txt
 1. Clone the Repository to your local device. 
-2. Navigate to the project folder with terminal or gitbash.
-Windows
-python -m -venv venv
-Mac/Linux
-python3 -m -venv venv
+2. Navigate to the project folder with terminal or gitbash and create a virtual envioronment. 
+- Windows
+`code`python -m -venv venv
+- Mac/Linux
+`code`python3 -m -venv venv
 3. Activate your virtual environment 
-Windows 
-venv\Scripts\activate.bat
-Mac/Linux
-source venv/bin/activate
+- Windows 
+`code`venv\Scripts\activate.bat
+- Mac/Linux
+`code`source venv/bin/activate
 4. Install the requirements.txt file using the following comand 
-pip install -r requirements.txt
+`code`pip install -r requirements.txt
 
 
 ### Via Poetry
 1. Clone the Repository to your local device.
 2. Install Poetry to your device. (For more information about poetry check out https://python-poetry.org/ )
-3. Open the folder in terminal or gitbash and type "Poetry Shell"
-4. Next, install the required programs from the pyproject.toml file by typing "Poetry Install"
+3. Open the folder in terminal or gitbash and type 
+`code`Poetry Shell
+4. Next, install the required programs from the pyproject.toml file by typing 
+`code`Poetry Install
 
 
 ## Running The Program
 
 1. Once you have activate your virtual environment above
-For Windows: 
-python program.py
+- For Windows: 
+`code`python program.py
 
-For Mac/Linux:
-python3 program.py
+- For Mac/Linux:
+`code`python3 program.py
 
 2. You will be prompted to enter the names of the pokemon you wish to add to your theoretical team. In the event you do not know the names of the original 151 pokemon or their spelling, you can enter "list" at anytime to get a list of their spellings. Note that the team 
 
