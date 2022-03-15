@@ -1,17 +1,20 @@
+import os
 import json
 import requests
 import matplotlib.pyplot as plt
 
+
 # MAIN FUNCTION 
+
 def main():
-    print("Welcome to the Classic Pokemon SWOT Program! \n")
     myTeam,myElements = build_Team()
     team = myTeam    
     buildup = team_makeup(myElements)
     weaknesses = team_weakness(buildup)
     strengths = team_strength(buildup)
     swot_anaylzer(buildup, weaknesses, strengths)
-    print('That looks like a solid team!')
+    print('That looks like a solid team! Let\'s Try again!\n')
+    repeat()
 
 #THIS FUNCTION COLLECTS THE NAME AND ELEMENTS OF USER POKEMON CHOICES VIA THE POKE LOOKUP
 def build_Team():
@@ -34,6 +37,7 @@ def pokeLookup():
         if poke_request.lower() == "list":
             listPokemon()
             pokeLookup()
+
         else:
             individual_api = "https://pokeapi.co/api/v2/pokemon/" + poke_request.lower() + "/"    
             response = requests.get(individual_api)
@@ -42,6 +46,7 @@ def pokeLookup():
             pokemon_type = poke_data['types'][0]['type']['name']
             print("\n I see you chose " + pokemon_name.capitalize() + " a " + pokemon_type.capitalize() + " pokemon. Great choice! \n")
         return pokemon_name, pokemon_type
+
     except:
         print("I couldn't find a match for that entry. If you are having trouble, type LIST to print a list of the Original 151 Pokemon and their correct spelling. \n")
 
@@ -150,5 +155,15 @@ def swot_anaylzer(count, strength, weakness):
   plt.show()
   return
 
+# THIS FUNCTION ASKS THE USER IF THEY WANT TO RUN THE LOOP AGAIN. IF NOT THE PROGRAM WILL CLOSE. 
+def repeat():
+    answer = input('Would you like to create another team? If yes, type "Y"')
+    if answer == 'Y':
+        main()
+    else:
+        print('Thanks for playing! Smell ya later!\n')
+        os._exit(0)
+
 # THIS ENSURES THE PROGRAM RUNS UPON LAUNCH 
+print("Welcome to the Classic Pokemon SWOT Program! \n")
 main()

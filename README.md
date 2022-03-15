@@ -28,37 +28,37 @@ The Classic Pokemon SWOT program allows you to choose your dream original pokemo
 1. Clone the Repository to your local device. 
 2. Navigate to the project folder with terminal or gitbash and create a virtual envioronment. 
 - Windows
-`code`python -m -venv venv
+`python -m -venv venv`
 - Mac/Linux
-`code`python3 -m -venv venv
+`python3 -m -venv venv`
 3. Activate your virtual environment 
 - Windows 
-`code`venv\Scripts\activate.bat
+`venv\Scripts\activate.bat`
 - Mac/Linux
-`code`source venv/bin/activate
+`source venv/bin/activate`
 4. Install the requirements.txt file using the following comand 
-`code`pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 
 ### Via Poetry
 1. Clone the Repository to your local device.
 2. Install Poetry to your device. (For more information about poetry check out https://python-poetry.org/ )
 3. Open the folder in terminal or gitbash and type 
-`code`Poetry Shell
+`Poetry Shell`
 4. Next, install the required programs from the pyproject.toml file by typing 
-`code`Poetry Install
+`Poetry Install`
 
 
 ## Running The Program
 
 1. Once you have activate your virtual environment above
 - For Windows: 
-`code`python program.py
+`python program.py`
 
 - For Mac/Linux:
-`code`python3 program.py
+`python3 program.py`
 
-2. You will be prompted to enter the names of the pokemon you wish to add to your theoretical team. In the event you do not know the names of the original 151 pokemon or their spelling, you can enter "list" at anytime to get a list of their spellings. Note that the team 
+2. You will be prompted to enter the names of the pokemon you wish to add to your theoretical team. In the event you do not know the names of the original 151 pokemon or their spelling, you can enter "list" at anytime to get a list of their spellings. 
 
 3. Once you finish, you will be presented with three figures. The first wil display your Dream Teams elemental buildup, the second will show which elements you will absolutely dominate in combat, and the third will show you what pokemon elements to look out for!  
 
