@@ -9,16 +9,46 @@ The Classic Pokemon SWOT program allows you to choose your dream original pokemo
 
 1. Implement a “master loop” console application where the user can repeatedly enter commands/perform actions, including choosing to exit the program.	
 
+-
+
 2. Connect to an external/3rd party API and read data into the app. 
 
 - This is done by utilizing the Pokemon API.  
 
 3. Visualize data in a graph, chart, or other visual representation of data.
+- This is done using pie charts with Matplotlib. 
 
 4. Utilize a virtual environment and document library dependencies in a requirements.txt file.
 
 ## Setup and Install
 
+### Via Requirements.txt
+1. Clone the Repository to your local device. 
+2. Navigate to the project folder with terminal or gitbash.
+Windows
+python -m -venv venv
+Mac/Linux
+python3 -m -venv venv
+3. Activate your virtual environment 
+4. Install the requirements.txt file by typing the following command
+
+### Via Poetry
+1. Clone the Repository to your local device.
+2. Install Poetry to your device. (For more information about poetry check out https://python-poetry.org/ )
+3. Open the folder in terminal or gitbash and type "Poetry Shell"
+4. Next, install the required programs from the pyproject.toml file by typing "Poetry Install"
 
 
+## Running The Program
+
+1. Once you have activate your virtual environment above
+For Windows: 
+python program.py
+
+For Mac/Linux:
+python3 program.py
+
+2. You will be prompted to enter the names of the pokemon you wish to add to your theoretical team. In the event you do not know the names of the original 151 pokemon or their spelling, you can enter "list" at anytime to get a list of their spellings. Note that the team 
+
+3. Once you finish, you will be presented with three figures. The first wil display your Dream Teams elemental buildup, the second will show which elements you will absolutely dominate in combat, and the third will show you what pokemon elements to look out for!  
 
