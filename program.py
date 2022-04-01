@@ -131,13 +131,13 @@ def swot_anaylzer(count, strength, weakness):
   team_strengths = strength
   team_weaknesses = weakness
   
-  
+
   Team_Make_Up, ax1 = plt.subplots()
   ax1.pie(team_make_up, labels=list_elements, colors=colors, explode=explode, autopct='%1.1f%%', shadow=False, startangle=90)
   ax1.axis('equal')
   plt.title("Check Out Your Pokemon Build!", bbox={'facecolor':'0.8', 'pad':5})
   plt.legend()
-  plt.figure(0)
+  
 
   Team_Strengths, ax1 = plt.subplots()
   ax1.pie(team_strengths, labels=list_elements, colors=colors, explode=explode, autopct='%1.1f%%', shadow=False, startangle=90)
