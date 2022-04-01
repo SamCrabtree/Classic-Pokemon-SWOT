@@ -28,9 +28,9 @@ The Classic Pokemon SWOT program allows you to choose your dream original pokemo
 1. Clone the Repository to your local device. 
 2. Navigate to the project folder with terminal or gitbash and create a virtual envioronment. 
 - Windows
-`python -m -venv venv`
+`python -m venv venv`
 - Mac/Linux
-`python3 -m -venv venv`
+`python3 -m venv venv`
 3. Activate your virtual environment 
 - Windows 
 `venv\Scripts\activate.bat`
@@ -38,6 +38,9 @@ The Classic Pokemon SWOT program allows you to choose your dream original pokemo
 `source venv/bin/activate`
 4. Install the requirements.txt file using the following comand 
 `pip install -r requirements.txt`
+**NOTE:** Some users (especially Ubuntu linux users) may have to install TKinter in order for matplot to display correctly. this can be done by running the following command below:
+`pip install python-tkinter` (for Ubuntu Based Systems)
+or `pip install tkinter` for other installations. 
 
 
 ### Via Poetry
@@ -47,6 +50,8 @@ The Classic Pokemon SWOT program allows you to choose your dream original pokemo
 `Poetry Shell`
 4. Next, install the required programs from the pyproject.toml file by typing 
 `Poetry Install`
+**NOTE:** Some users (especially Ubuntu linux users) may have to install TKinter in order for matplot to display correctly. this can be done by running the following command below:
+`Poetry add Tkinter` 
 
 
 ## Running The Program
